@@ -1,0 +1,9 @@
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := LDWS
+LOCAL_SRC_FILES := $(NDK_PROJECT_PATH)/obj/local/armeabi/libLDWS.a
+
+LOCAL_STATIC_LIBRARIES := NE10
+
+include $(PREBUILT_STATIC_LIBRARY)

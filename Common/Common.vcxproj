@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{71EBB106-4446-47EB-8A8B-79954CD462DC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Common</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)lib\</OutDir>
+    <TargetExt>d.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)Common\utils.h  $(SolutionDir)lib\utils.h
+copy $(SolutionDir)Common\common.h  $(SolutionDir)lib\common.h
+copy $(SolutionDir)Common\utility_function.h  $(SolutionDir)lib\utility_function.h
+copy $(SolutionDir)Common\clustering_rect.h  $(SolutionDir)lib\clustering_rect.h
+copy $(SolutionDir)Common\matrix_computation.h  $(SolutionDir)lib\matrix_computation.h
+copy $(SolutionDir)Common\sort_algorithm.h  $(SolutionDir)lib\sort_algorithm.h
+copy $(SolutionDir)Common\kalman_filter.h  $(SolutionDir)lib\kalman_filter.h
+copy $(SolutionDir)Common\corner_detection.h  $(SolutionDir)lib\corner_detection.h
+copy $(SolutionDir)Common\surf_feature.h  $(SolutionDir)lib\surf_feature.h</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if not exist $(SolutionDir)lib md $(SolutionDir)lib
+</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)Common\utils.h  $(SolutionDir)lib\utils.h
+copy $(SolutionDir)Common\common.h  $(SolutionDir)lib\common.h
+copy $(SolutionDir)Common\utility_function.h  $(SolutionDir)lib\utility_function.h
+copy $(SolutionDir)Common\clustering_rect.h  $(SolutionDir)lib\clustering_rect.h
+copy $(SolutionDir)Common\matrix_computation.h  $(SolutionDir)lib\matrix_computation.h
+copy $(SolutionDir)Common\sort_algorithm.h  $(SolutionDir)lib\sort_algorithm.h
+copy $(SolutionDir)Common\kalman_filter.h  $(SolutionDir)lib\kalman_filter.h
+copy $(SolutionDir)Common\corner_detection.h  $(SolutionDir)lib\corner_detection.h
+copy $(SolutionDir)Common\surf_feature.h  $(SolutionDir)lib\surf_feature.h</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if not exist $(SolutionDir)lib md $(SolutionDir)lib</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="clustering_rect.c" />
+    <ClCompile Include="common.c" />
+    <ClCompile Include="corner_detection.c" />
+    <ClCompile Include="interpolation_algorithm.c" />
+    <ClCompile Include="kalman_filter.c" />
+    <ClCompile Include="matrix_computation.c" />
+    <ClCompile Include="sort_algorithm.c" />
+    <ClCompile Include="surf_feature.c" />
+    <ClCompile Include="surf_table.c" />
+    <ClCompile Include="utility_function.c" />
+    <ClCompile Include="utils.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="clustering_rect.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="corner_detection.h" />
+    <ClInclude Include="interpolation_algorithm.h" />
+    <ClInclude Include="kalman_filter.h" />
+    <ClInclude Include="matrix_computation.h" />
+    <ClInclude Include="sort_algorithm.h" />
+    <ClInclude Include="surf_feature.h" />
+    <ClInclude Include="utility_function.h" />
+    <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
